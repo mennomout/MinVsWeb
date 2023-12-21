@@ -1,6 +1,5 @@
 using Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing.Template;
 using VolLiefdeWebApi.Filters;
 
 namespace VolLiefdeWebApi.Controllers
@@ -30,11 +29,11 @@ namespace VolLiefdeWebApi.Controllers
         }
 
         [HttpPost(_baseRoute + "add/{name}")]
-        public IActionResult Post(string name, QuoteModel model)
+        public IActionResult Post(string name, QuoteModel quote)
         {
             if (!_quoteRepository.ContainsQuoteBy(name))
             {
-                _quoteRepository.Add(name, model);
+                _quoteRepository.Add(name, quote);
                 return Ok();
             }
 
